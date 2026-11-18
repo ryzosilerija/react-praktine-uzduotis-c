@@ -29,11 +29,16 @@ function App() {
     }
   }
 
+  // Removes the whole row of the selected product
+  function removeFromCart(id) {
+    setCart(cart.filter((item) => item.id !== id));
+  }
+
   return (
     <main className="container">
       <h1>Parduotuvė</h1>
       <ProductList products={products} onAdd={addToCart} />
-      <Cart cart={cart} />
+      <Cart cart={cart} onRemove={removeFromCart} />
     </main>
   );
 }
