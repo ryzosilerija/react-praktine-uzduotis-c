@@ -3,55 +3,51 @@ import GuessForm from "./GuessForm";
 import Message from "./Message";
 
 function GuessGame() {
-  // Initializer function runs only once, so the number does not change between renders
+  // Initializer function runs once, so the secret number stays the same
   const [secretNumber] = useState(() => Math.floor(Math.random() * 100) + 1);
   const [guess, setGuess] = useState("");
   const [attempts, setAttempts] = useState(0);
   const [message, setMessage] = useState("");
-  const [isError, setIsError] = useState(false);
+  const [messageType, setMessageType] = useState("");
   const [isWon, setIsWon] = useState(false);
 
-  function handleGuess() {
-    const trimmedGuess = guess.trim();
-    const number = Number(trimmedGuess);
+  const handleGuess = () => {
+    const number = Number(guess.trim());
 
     // Rejects empty, non-numeric, fractional and out of range input
-    if (
-      trimmedGuess === "" ||
-      !Number.isInteger(number) ||
-      number < 1 ||
-      number > 100
-    ) {
-      setMessage("Įveskite sveikąjį skaičių nuo 1 iki 100.");
-      setIsError(true);
+    if (guess.trim() === "" || !Number.isInteger(number) || number < 1 || number > 100) {
+      setMessage("Įveskite sveikąjį skaičių nuo 1 iki 100");
+      setMessageType("error");
       return;
     }
 
     setAttempts(attempts + 1);
-    setIsError(false);
 
     if (number > secretNumber) {
       setMessage("Bandyk mažesnį");
+      setMessageType("lower");
     } else if (number < secretNumber) {
       setMessage("Bandyk didesnį");
+      setMessageType("higher");
     } else {
       setMessage("Teisingai!");
+      setMessageType("win");
       setIsWon(true);
     }
 
     setGuess("");
-  }
+  };
 
   return (
-    <div>
+    <div className="guess-game">
+      <h2 className="attempts">Bandymai: {attempts}</h2>
+      <Message text={message} type={messageType} />
       <GuessForm
         value={guess}
         onChange={setGuess}
         onGuess={handleGuess}
         disabled={isWon}
       />
-      <Message text={message} isError={isError} />
-      <p>Bandymų skaičius: {attempts}</p>
     </div>
   );
 }

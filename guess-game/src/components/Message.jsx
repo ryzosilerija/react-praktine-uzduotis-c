@@ -1,9 +1,9 @@
-function Message({ text, isError }) {
+function Message({ text, type }) {
   if (text === "") {
     return null;
   }
 
-  return <p className={isError ? "message error" : "message hint"}>{text}</p>;
+  return <div className={`message ${type}`}>{text}</div>;
 }
 
 export default Message;
