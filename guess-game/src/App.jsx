@@ -18,7 +18,7 @@ function App() {
           className={mode === "betting" ? "active" : ""}
           onClick={() => setMode("betting")}
         >
-          Vertės lažybos
+          
         </button>
       </nav>
 
