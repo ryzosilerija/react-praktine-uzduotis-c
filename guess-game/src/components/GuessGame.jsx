@@ -9,6 +9,7 @@ function GuessGame() {
   const [attempts, setAttempts] = useState(0);
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
+  const [isWon, setIsWon] = useState(false);
 
   function handleGuess() {
     const trimmedGuess = guess.trim();
@@ -33,6 +34,9 @@ function GuessGame() {
       setMessage("Bandyk mažesnį");
     } else if (number < secretNumber) {
       setMessage("Bandyk didesnį");
+    } else {
+      setMessage("Teisingai!");
+      setIsWon(true);
     }
 
     setGuess("");
@@ -40,7 +44,12 @@ function GuessGame() {
 
   return (
     <div>
-      <GuessForm value={guess} onChange={setGuess} onGuess={handleGuess} />
+      <GuessForm
+        value={guess}
+        onChange={setGuess}
+        onGuess={handleGuess}
+        disabled={isWon}
+      />
       <Message text={message} isError={isError} />
       <p>Bandymų skaičius: {attempts}</p>
     </div>
