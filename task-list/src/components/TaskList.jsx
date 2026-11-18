@@ -12,6 +12,19 @@ function TaskList() {
     setNextId(nextId + 1);
   }
 
+  // Creates a new array and changes only the selected task
+  function completeTask(id) {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, completed: true } : task
+      )
+    );
+  }
+
+  function deleteTask(id) {
+    setTasks(tasks.filter((task) => task.id !== id));
+  }
+
   return (
     <div>
       <TaskForm onAdd={addTask} />
@@ -21,7 +34,12 @@ function TaskList() {
       ) : (
         <ul className="task-list">
           {tasks.map((task) => (
-            <TaskItem key={task.id} task={task} />
+            <TaskItem
+              key={task.id}
+              task={task}
+              onComplete={completeTask}
+              onDelete={deleteTask}
+            />
           ))}
         </ul>
       )}
