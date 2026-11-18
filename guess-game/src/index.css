@@ -33,6 +33,18 @@ input:disabled {
   opacity: 0.5;
 }
 
+.mode-switch {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.mode-switch .active {
+  background: #2c3e50;
+  color: white;
+}
+
 .message {
   font-weight: bold;
 }
