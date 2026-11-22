@@ -16,7 +16,7 @@ function App() {
     const existingItem = cart.find((item) => item.id === product.id);
 
     if (existingItem) {
-      // Product already in cart: increase quantity instead of adding a new row
+      // productas jau eileje padidintoi produktu kiekio numeri
       setCart(
         cart.map((item) =>
           item.id === product.id
@@ -29,7 +29,7 @@ function App() {
     }
   }
 
-  // Removes the whole row of the selected product
+  // istrinti eilute pasirinktu stulpeliu
   function removeFromCart(id) {
     setCart(cart.filter((item) => item.id !== id));
   }

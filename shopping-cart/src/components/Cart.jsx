@@ -1,7 +1,7 @@
 import { formatPrice } from "../formatPrice";
 
 function Cart({ cart, onRemove }) {
-  // Total is calculated from cart data on every render
+  // perkraunant viska perskaiciuoti
   const total = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0

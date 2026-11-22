@@ -1,4 +1,4 @@
-// Formats a number as "1,99 Eur"
+// formatuoja numeri"
 export function formatPrice(value) {
   return value.toFixed(2).replace(".", ",") + " Eur";
 }
