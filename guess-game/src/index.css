@@ -16,7 +16,7 @@ input:disabled {
   cursor: not-allowed;
 }
 
-/* Mode switch between the two games */
+/* modas, */
 .mode-switch {
   display: flex;
   justify-content: center;
@@ -36,7 +36,7 @@ input:disabled {
   background: linear-gradient(135deg, #007bff, #00c6ff);
 }
 
-/* Guess game */
+/* pats zaidimas */
 .container {
   max-width: 500px;
   margin: 0 auto;
@@ -100,7 +100,7 @@ input:disabled {
   border-radius: 8px;
 }
 
-/* Same colors as LOWER / HIGHER in the betting game */
+/* laimejimas pralaimejimas ar error, nuo to priklauso zinutes spalva */
 .message.lower {
   background-color: red;
 }

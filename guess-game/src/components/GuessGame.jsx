@@ -3,7 +3,7 @@ import GuessForm from "./GuessForm";
 import Message from "./Message";
 
 function GuessGame() {
-  // Initializer function runs once, so the secret number stays the same
+  // run tik syki kad secret numeris liktu toks pats
   const [secretNumber] = useState(() => Math.floor(Math.random() * 100) + 1);
   const [guess, setGuess] = useState("");
   const [attempts, setAttempts] = useState(0);
@@ -14,7 +14,7 @@ function GuessGame() {
   const handleGuess = () => {
     const number = Number(guess.trim());
 
-    // Rejects empty, non-numeric, fractional and out of range input
+    // tikriname ar tai kas ivesta tuscia ar turi numeri
     if (guess.trim() === "" || !Number.isInteger(number) || number < 1 || number > 100) {
       setMessage("Įveskite sveikąjį skaičių nuo 1 iki 100");
       setMessageType("error");

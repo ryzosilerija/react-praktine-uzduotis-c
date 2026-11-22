@@ -1,5 +1,5 @@
 function GuessForm({ value, onChange, onGuess, disabled }) {
-  // Submitting the form works with the button and with Enter
+  // Spaudziamas enter kad ivesti spejima
   const handleSubmit = (event) => {
     event.preventDefault();
     onGuess();
